@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WireWorld em JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main-container">
+        <div id="menu-screen" class="screen active">
+            <h1>WireWorld</h1>
+            <h2>Autômato Celular</h2>
+            <textarea id="circuit-input" rows="8" placeholder="Ex: wwhww.wwwwt-hwwww"></textarea>
+            <div>
+                <button id="start-button">Iniciar</button>
+                <button id="save-circuit-button">Salvar</button>
+                <button id="load-circuit-button">Carregar</button>
+                <input type="file" id="file-input" accept=".txt" style="display:none" />
+                <button id="instructions-button">Instruções</button>
+            </div>
+        </div>
+        <div id="simulation-screen" class="screen">
+            <canvas id="wireworld-canvas"></canvas>
+            <div id="ui-panel">
+                <button id="play-pause-button">Play</button>
+                <button id="reset-button">Resetar</button>
+                <button id="clear-button">Limpar</button>
+                <button id="back-to-menu-button">Menu</button>
+                <label for="speed-slider">Velocidade: <span id="speed-value">30</span> g/s</label>
+                <input type="range" id="speed-slider" min="1" max="60" value="30">
+                <span>Geração: <span id="generation-count">0</span></span>
+                <span>Status: <span id="status-text">Pausado</span></span>
+            </div>
+        </div>
+        <div id="instructions-screen" class="screen">
+            <h2>Instruções</h2>
+            <div class="instructions-content">
+                <ul>
+                    <li><b>Vazio</b>: Permanece Vazio</li>
+                    <li><b>Cabeça</b>: Vira Cauda</li>
+                    <li><b>Cauda</b>: Vira Fio</li>
+                    <li><b>Fio</b>: Vira Cabeça se 1 ou 2 vizinhos forem Cabeças</li>
+                </ul>
+                <ul>
+                    <li><b>Mouse Esquerdo:</b> Fio</li>
+                    <li><b>Mouse Direito:</b> Apaga</li>
+                    <li><b>Mouse Meio:</b> Cauda</li>
+                </ul>
+            </div>
+            <button id="back-from-instructions-button">Voltar</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+:root {
+    --bg-color: rgb(20, 20, 30);
+    --panel-color: rgb(50, 50, 70);
+    --grid-line-color: rgb(40, 40, 50);
+    --font-color: rgb(230, 230, 255);
+    --accent-color: rgb(0, 150, 255);
+    --conductor-color: rgb(255, 180, 0);
+    --head-color: rgb(0, 150, 255);
+    --tail-color: rgb(255, 50, 50);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+#main-container {
+    width: 95%;
+    max-width: 1200px;
+    height: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.screen { display: none; }
+.screen.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- Estilos do Menu e Instruções --- */
+#menu-screen, #instructions-screen { text-align: center; }
+h1 { font-size: 3rem; color: var(--accent-color); margin-bottom: 0; }
+h2 { font-size: 1.5rem; margin-top: 5px; }
+textarea {
+    width: 80%;
+    max-width: 500px;
+    height: 120px;
+    background-color: var(--grid-line-color);
+    color: var(--font-color);
+    border: 1px solid var(--panel-color);
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    margin: 20px 0;
+}
+button {
+    background-color: var(--panel-color);
+    color: var(--font-color);
+    border: none;
+    padding: 12px 24px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+button:hover { background-color: var(--accent-color); }
+.instructions-content {
+    text-align: left;
+    max-width: 600px;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+}
+.instructions-content ul { list-style: none; padding-left: 10px; }
+.instructions-content li { margin-bottom: 10px; }
+
+/* --- Estilos da Simulação --- */
+#simulation-screen { gap: 10px; }
+canvas {
+    background-color: var(--bg-color);
+    border: 2px solid var(--panel-color);
+}
+#ui-panel {
+    background-color: var(--panel-color);
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-sizing: border-box;
+}
+.ui-group { display: flex; align-items: center; gap: 15px; }
+.info-group { background-color: rgba(0,0,0,0.3); padding: 5px 15px; border-radius: 5px;}
+input[type="range"] { cursor: pointer; }
