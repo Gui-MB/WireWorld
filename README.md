@@ -8,6 +8,8 @@
 WireWorld é uma implementação interativa em **JavaScript** do famoso autômato celular inventado por Brian Silverman em 1987.  
 Ele permite simular circuitos digitais utilizando regras simples aplicadas em uma grade bidimensional.
 
+
+Este é um trabalho da Disciplina de Computação Cientifica executado por Dilson Freitas Simões Junior e Guilher de Medeiros Burkert, ambos da Universidade Federal de Rio Grande (FURG)
 ---
 
 ## 🚀 Funcionalidades
