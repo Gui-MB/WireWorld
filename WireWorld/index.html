@@ -7,50 +7,87 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="main-container">
-        <div id="menu-screen" class="screen active">
+    <!-- Container principal que organiza o layout em duas colunas: simulação e presets -->
+    <div id="app-container">
+        
+        <!-- Wrapper para a área de simulação e controles -->
+        <div id="simulation-wrapper">
+            <!-- Título -->
             <h1>WireWorld</h1>
             <h2>Autômato Celular</h2>
-            <textarea id="circuit-input" rows="8" placeholder="Ex: wwhww.wwwwt-hwwww"></textarea>
-            <div>
-                <button id="start-button">Iniciar</button>
+
+            <!-- Canvas onde a simulação é desenhada -->
+            <canvas id="wireworld-canvas"></canvas>
+
+            <!-- Painel de Controles da Simulação -->
+            <div id="ui-panel">
+                <!-- Controles de execução -->
+                <button id="play-pause-button">Play</button>
+                <button id="step-button">Step</button>
+                <button id="reset-button">Resetar</button>
+                <button id="clear-button">Limpar</button>
+                
+                <!-- Controles de arquivo -->
                 <button id="save-circuit-button">Salvar</button>
                 <button id="load-circuit-button">Carregar</button>
                 <input type="file" id="file-input" accept=".txt" style="display:none" />
-                <button id="instructions-button">Instruções</button>
-            </div>
-        </div>
-        <div id="simulation-screen" class="screen">
-            <canvas id="wireworld-canvas"></canvas>
-            <div id="ui-panel">
-                <button id="play-pause-button">Play</button>
-                <button id="reset-button">Resetar</button>
-                <button id="clear-button">Limpar</button>
-                <button id="back-to-menu-button">Menu</button>
-                <label for="speed-slider">Velocidade: <span id="speed-value">30</span> g/s</label>
-                <input type="range" id="speed-slider" min="1" max="60" value="30">
+
+                <!-- Controle de velocidade -->
+                <label for="speed-slider">Velocidade: <span id="speed-value">1</span> g/s</label>
+                <input type="range" id="speed-slider" min="1" max="60" value="1">
+
+                <!-- Informações da simulação -->
                 <span>Geração: <span id="generation-count">0</span></span>
                 <span>Status: <span id="status-text">Pausado</span></span>
             </div>
-        </div>
-        <div id="instructions-screen" class="screen">
-            <h2>Instruções</h2>
-            <div class="instructions-content">
-                <ul>
-                    <li><b>Vazio</b>: Permanece Vazio</li>
-                    <li><b>Cabeça</b>: Vira Cauda</li>
-                    <li><b>Cauda</b>: Vira Fio</li>
-                    <li><b>Fio</b>: Vira Cabeça se 1 ou 2 vizinhos forem Cabeças</li>
-                </ul>
-                <ul>
-                    <li><b>Mouse Esquerdo:</b> Fio</li>
-                    <li><b>Mouse Direito:</b> Apaga</li>
-                    <li><b>Mouse Meio:</b> Cauda</li>
-                </ul>
+
+            <!-- Painel de Instruções -->
+            <div id="instructions-panel">
+                <h3>Instruções</h3>
+                <div class="instructions-content">
+                    <h4>Regras do Wireworld:</h4>
+                    <ul>
+                        <li><b>Vazio</b>: Permanece Vazio.</li>
+                        <li><b>Head</b>: Vira uma Tail.</li>
+                        <li><b>Tail</b>: Vira um Wire.</li>
+                        <li><b>Wire</b>: Vira uma Head se 1 ou 2 vizinhos forem Heads.</li>
+                    </ul>
+                    <h4>Controles do Mouse:</h4>
+                    <ul>
+                        <li><b>Mouse Esquerdo:</b> Desenha/Remove Wire.</li>
+                        <li><b>Mouse Direito:</b> Desenha/Remove Head.</li>
+                        <li><b>Mouse Meio:</b> Desenha/Remove Tail.</li>
+                    </ul>
+                </div>
             </div>
-            <button id="back-from-instructions-button">Voltar</button>
         </div>
+
+        <!-- Painel de Circuitos Prontos (Presets) -->
+        <div id="presets-panel">
+            <h3>Circuitos Prontos</h3>
+            <div id="presets-list">
+                <div class="preset-item" data-preset="diode">
+                    <span class="preset-name">Diodo</span>
+                    <p class="preset-description">Permite que o sinal passe em uma única direção.</p>
+                </div>
+                <div class="preset-item" data-preset="transistor">
+                    <span class="preset-name">Transistor</span>
+                    <p class="preset-description">Funciona como um interruptor ou amplificador de sinal.</p>
+                </div>
+                <div class="preset-item" data-preset="xor">
+                    <span class="preset-name">Porta XOR</span>
+                    <p class="preset-description">Produz uma saída se as entradas forem diferentes.</p>
+                </div>
+                <div class="preset-item" data-preset="clock">
+                    <span class="preset-name">Gerador de Clock</span>
+                    <p class="preset-description">Gera um pulso de elétrons contínuo.</p>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+    <!-- Inclusão do script principal da aplicação -->
     <script src="script.js"></script>
 </body>
 </html>
