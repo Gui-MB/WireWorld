@@ -10,6 +10,9 @@ import time
 PORT = 8000
 HOSTNAME = "localhost"
 REQUIRED_FILES = ["index.html", "style.css", "script.js"]
+FILES_DIR = os.path.dirname(os.path.abspath(__file__))
+FILES_SUBDIR = FILES_DIR
+SERVE_DIR = FILES_DIR
 
 def start_server():
     Handler = http.server.SimpleHTTPRequestHandler
@@ -22,14 +25,16 @@ if __name__ == "__main__":
 
     # 1. Verificando se existem todos os arquivos necessários
     for filename in REQUIRED_FILES:
-        if not os.path.exists(filename):
-            print(f"\nERRO: Arquivo '{filename}' não encontrado.")
-            print("Certifique-se de que os 4 arquivos (run.py, index.html, style.css, script.js) estão na mesma pasta.")
+        file_path = os.path.join(FILES_DIR, filename)
+        if not os.path.exists(file_path):
+            print(f"\nERRO: Arquivo '{filename}' não encontrado na pasta '{FILES_DIR}'.")
+            print("Certifique-se de que os arquivos (run.py, index.html, style.css, script.js) estão na pasta 'WireWorld/'.")
             sys.exit(1)
     
     print("Todos os arquivos foram encontrados.")
 
     # 2. Inicia o servidor em uma thread separada
+    os.chdir(SERVE_DIR)
     server_thread = threading.Thread(target=start_server)
     server_thread.daemon = True
     server_thread.start()

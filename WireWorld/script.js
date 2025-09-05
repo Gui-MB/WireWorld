@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
     // ===================================================================================
     // --- CONSTANTES E VARIÁVEIS GLOBAIS ---
     // ===================================================================================
@@ -55,26 +55,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRESETS = {
         diode: `
 .w.
-whw
+www
 .w.
 `,
         transistor: `
+..w..
 .whw.
 w.w.w
 .whw.
-.w.
-.w.
+..w..
 `,
         xor: `
-.w.w.
-whw.w
-w.whw
-.w.w.
+www......
+...w.....
+..wwww...
+..w..wwww
+..wwww...
+...w.....
+www......
 `,
         clock: `
-.whw
-w..w
-.whw
+.wwth.
+w....w
+.wwww.
 `.trim()
     };
 
